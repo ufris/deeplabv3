@@ -126,8 +126,8 @@ def xml_bbox_location_changer(dataset_train,xml_path,scale,change_name=None):
         update_xml(xml_file, objects)
 
 def use_open_change_xml_name():
-    xml_path = '/media/j/DATA/LabelImage/fracture_label/wrist/professor_fix_label/add_xml/4_roi_wrist_detection_train/retinanet_train/part_detection_la/val/xml' + '/'
-    save_path = '/media/j/DATA/LabelImage/fracture_label/wrist/professor_fix_label/add_xml/4_roi_wrist_detection_train/retinanet_train/part_detection_la/val/xml_save' + '/'
+    xml_path = 'xml/path' + '/'
+    save_path = 'save/path' + '/'
     xml_list = os.listdir(xml_path)
 
     if not os.path.exists(save_path):
