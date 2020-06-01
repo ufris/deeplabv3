@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
 
-def deeplab_v3(X,filter_cnt=32,OS=8,training=False,class_num=1,minmax='minmax',train_cls=False):
+def deeplab_v3(X,filter_cnt=32,OS=8,training=False,class_num=1,minmax='minmax',train_cls=False,cls_class_num=1):
     he_init = tf.variance_scaling_initializer(scale=2.0)
     l2_reg = tf.contrib.layers.l2_regularizer(0.001)
     def conv2d(x,filter,dilate_rate,training,name,kernel=3,stride=1):
@@ -146,7 +146,7 @@ def deeplab_v3(X,filter_cnt=32,OS=8,training=False,class_num=1,minmax='minmax',t
        cls1 = tf.keras.layers.GlobalAveragePooling2D()(net)
        cls2 = tf.keras.layers.Dropout(0.5)(cls1)
        cls3 = tf.keras.layers.Dense(2048, activation='relu')(cls2)
-       cls4 = tf.keras.layers.Dense(2, activation='softmax')(cls3)
+       cls4 = tf.keras.layers.Dense(cls_class_num, activation='softmax')(cls3)
 
     # ASPP block
 
